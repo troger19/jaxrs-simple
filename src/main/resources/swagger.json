@@ -1,0 +1,392 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "backend-ws"
+    },
+    "host": "localhost:8081/services/rest",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/vehicle/evaluate": {
+            "post": {
+                "consumes": [
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/OcenenieVozidlaPoziadavka"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/OcenenieVozidlaOdpoved"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ClientIdentification": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "xml": {
+                        "name": "meno"
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "xml": {
+                        "name": "heslo"
+                    }
+                }
+            },
+            "xml": {
+                "name": "identifikaciaKlienta"
+            }
+        },
+        "MotorizaciaEuroTaxDto": {
+            "properties": {
+                "idEurotax": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                },
+                "stupenVybavy": {
+                    "type": "string",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                },
+                "cena": {
+                    "type": "number",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                },
+                "palivo": {
+                    "type": "string",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                },
+                "vykon": {
+                    "type": "number",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                },
+                "objem": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                },
+                "prevodovka": {
+                    "type": "string",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+                    }
+                }
+            },
+            "xml": {
+                "name": "com.emeldi.b2bservice.backend.schema.ocenenie.MotorizaciaEuroTaxDto"
+            }
+        },
+        "OcenenieVozidlaOdpoved": {
+            "properties": {
+                "status": {
+                    "$ref": "#/definitions/Status",
+                    "xml": {
+                        "name": "status"
+                    }
+                },
+                "ecv": {
+                    "type": "string",
+                    "xml": {
+                        "name": "ecv"
+                    }
+                },
+                "vin": {
+                    "type": "string",
+                    "xml": {
+                        "name": "vin"
+                    }
+                },
+                "tp": {
+                    "type": "string",
+                    "xml": {
+                        "name": "tp"
+                    }
+                },
+                "znacka": {
+                    "type": "string",
+                    "xml": {
+                        "name": "znacka"
+                    }
+                },
+                "model": {
+                    "type": "string",
+                    "xml": {
+                        "name": "model"
+                    }
+                },
+                "datumVyroby": {
+                    "type": "object",
+                    "xml": {
+                        "name": "datumVyroby"
+                    }
+                },
+                "prevodovka": {
+                    "type": "string",
+                    "xml": {
+                        "name": "prevodovka"
+                    }
+                },
+                "palivo": {
+                    "type": "string",
+                    "xml": {
+                        "name": "palivo"
+                    }
+                },
+                "objem": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "objem"
+                    }
+                },
+                "vykon": {
+                    "type": "number",
+                    "xml": {
+                        "name": "vykon"
+                    }
+                },
+                "stupenVybavy": {
+                    "type": "string",
+                    "xml": {
+                        "name": "stupenVybavy"
+                    }
+                },
+                "cena": {
+                    "type": "number",
+                    "xml": {
+                        "name": "cena"
+                    }
+                },
+                "idEurotax": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "idEurotax"
+                    }
+                },
+                "vozidloEuroTaxDtos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VozidloEuroTaxDto"
+                    },
+                    "xml": {
+                        "name": "vozidlo"
+                    }
+                }
+            },
+            "xml": {
+                "namespace": "com/emeldi/b2bservice/backend/schema/ocenenie",
+                "name": "OcenenieVozidlaOdpoved",
+                "prefix": "ns"
+            }
+        },
+        "OcenenieVozidlaPoziadavka": {
+            "properties": {
+                "clientIdentification": {
+                    "$ref": "#/definitions/ClientIdentification",
+                    "xml": {
+                        "name": "identifikaciaKlienta"
+                    }
+                },
+                "productIdentification": {
+                    "$ref": "#/definitions/ProductIdentification",
+                    "xml": {
+                        "name": "identifikaciaProduktu"
+                    }
+                },
+                "ecv": {
+                    "type": "string",
+                    "xml": {
+                        "name": "ecv"
+                    }
+                },
+                "vin": {
+                    "type": "string",
+                    "xml": {
+                        "name": "vin"
+                    }
+                },
+                "tp": {
+                    "type": "string",
+                    "xml": {
+                        "name": "tp"
+                    }
+                },
+                "znacka": {
+                    "type": "string",
+                    "xml": {
+                        "name": "znacka"
+                    }
+                },
+                "model": {
+                    "type": "string",
+                    "xml": {
+                        "name": "model"
+                    }
+                },
+                "palivo": {
+                    "type": "string",
+                    "xml": {
+                        "name": "palivo"
+                    }
+                },
+                "datumVyroby": {
+                    "type": "object",
+                    "xml": {
+                        "name": "datumVyroby"
+                    }
+                },
+                "prevodovka": {
+                    "type": "string",
+                    "xml": {
+                        "name": "prevodovka"
+                    }
+                },
+                "objem": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "objem"
+                    }
+                },
+                "vykon": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "vykon"
+                    }
+                },
+                "stupenVybavy": {
+                    "type": "string",
+                    "xml": {
+                        "name": "stupenVybavy"
+                    }
+                }
+            },
+            "xml": {
+                "namespace": "com/emeldi/b2bservice/backend/schema/ocenenie",
+                "name": "OcenenieVozidlaPoziadavka",
+                "prefix": "ns"
+            }
+        },
+        "ProductIdentification": {
+            "properties": {
+                "idProd": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "idProd"
+                    }
+                },
+                "idMaProd": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "idMAProd"
+                    }
+                },
+                "referenceDate": {
+                    "type": "object",
+                    "xml": {
+                        "name": "referencnyDatum"
+                    }
+                }
+            },
+            "xml": {
+                "name": "identifikaciaProduktu"
+            }
+        },
+        "Status": {
+            "properties": {
+                "kod": {
+                    "type": "integer",
+                    "xml": {
+                        "name": "kod"
+                    }
+                },
+                "text": {
+                    "type": "string",
+                    "xml": {
+                        "name": "text"
+                    }
+                }
+            },
+            "xml": {
+                "name": "status"
+            }
+        },
+        "VozidloEuroTaxDto": {
+            "properties": {
+                "znacka": {
+                    "type": "string",
+                    "xml": {
+                        "name": "znacka"
+                    }
+                },
+                "vozidloModelEuroTaxDtos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VozidloModelEuroTaxDto"
+                    },
+                    "xml": {
+                        "name": "model"
+                    }
+                }
+            },
+            "xml": {
+                "name": "vozidloSKP",
+                "prefix": "ns"
+            }
+        },
+        "VozidloModelEuroTaxDto": {
+            "properties": {
+                "motorizacia": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MotorizaciaEuroTaxDto"
+                    },
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.VozidloModelEuroTaxDto"
+                    }
+                },
+                "nazov": {
+                    "type": "string",
+                    "xml": {
+                        "name": "com.emeldi.b2bservice.backend.schema.ocenenie.VozidloModelEuroTaxDto"
+                    }
+                }
+            },
+            "xml": {
+                "name": "com.emeldi.b2bservice.backend.schema.ocenenie.VozidloModelEuroTaxDto"
+            }
+        }
+    }
+}
